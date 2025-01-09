@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Button, StyleSheet, FlatList, ActivityIndicator } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { fetchPrayerTimes } from '../utils/api';
-import { PrayerTimes, Location } from '../utils/types';
+import { PrayerTimes, Location, RootStackParamList } from '../utils/types';
 import { useApp } from '../contexts/AppContext';
 
 type PrayerTimeItem = [string, string];
 
 const HomePage: React.FC = () => {
     const { settings, prayerTimes, location } = useApp();
-    const navigation = useNavigation();
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
     const [nextPrayer, setNextPrayer] = useState<string | null>(null);
     const [dailyTip, setDailyTip] = useState<string>(''); // Placeholder for daily tip
 
@@ -61,11 +61,26 @@ const HomePage: React.FC = () => {
                 <Text style={styles.subheading}>Dagelijkse Tip</Text>
                 <Text style={styles.dailyTip}>{dailyTip}</Text>
                 <View style={styles.quickAccess}>
-                    <Button title="Gebedstijden" onPress={() => { /* Navigate to prayer times */ }} />
-                    <Button title="Quran" onPress={() => { /* Navigate to Quran */ }} />
-                    <Button title="Tafseer" onPress={() => { /* Navigate to Tafseer */ }} />
-                    <Button title="Dua's" onPress={() => { /* Navigate to Dua's */ }} />
-                    <Button title="Instellingen" onPress={() => { /* Navigate to settings */ }} />
+                    <Button 
+                        title="Gebedstijden" 
+                        onPress={() => navigation.navigate('Prayer Times')} 
+                    />
+                    <Button 
+                        title="Quran" 
+                        onPress={() => navigation.navigate('Quran')} 
+                    />
+                    <Button 
+                        title="Hadith" 
+                        onPress={() => navigation.navigate('Hadith')} 
+                    />
+                    <Button 
+                        title="Dua's" 
+                        onPress={() => navigation.navigate('Duas')} 
+                    />
+                    <Button 
+                        title="Instellingen" 
+                        onPress={() => navigation.navigate('Settings')} 
+                    />
                 </View>
             </View>
             <Footer />

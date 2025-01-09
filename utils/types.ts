@@ -61,3 +61,13 @@ export const isValidLocation = (location: Location): boolean => {
         location.longitude <= 180
     );
 };
+
+// Navigation types
+export type RootStackParamList = {
+  Home: undefined;
+  'Prayer Times': undefined;
+  Settings: undefined;
+  Quran: undefined;
+  Hadith: undefined;
+  Duas: undefined;
+};
