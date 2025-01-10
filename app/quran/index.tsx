@@ -1,10 +1,10 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React from "react";
+import { View, Text } from "react-native";
 
 export default function QuranPage() {
-    return (
-        <View>
-            <Text>Quran Overview Page (Coming Soon)</Text>
-        </View>
-    );
+  return (
+    <View>
+      <Text className="bg-red-500">Quran Overview Page (Coming Soon)</Text>
+    </View>
+  );
 }
